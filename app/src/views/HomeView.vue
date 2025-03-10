@@ -1,10 +1,12 @@
 <template>
-  <div>
-
+  <div></div>
+  <FirstChart :satData="satData" />
   </div>
 </template>
 
+
 <script setup>
+import FirstChart from '../components/FirstChart.vue'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
