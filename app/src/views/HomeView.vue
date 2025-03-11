@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>
   <FirstChart :satData="satData" />
   </div>
 </template>
