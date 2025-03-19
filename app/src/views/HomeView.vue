@@ -22,6 +22,18 @@ async function getData() {
 onMounted(() => {
   getData()
 })
+
+const satData = reactive({
+  labels: SatStats ,
+  datasets: [
+    {
+      label:"Count",
+      data: [a,b],
+      backgroundColor: "cdc0b0",
+      borderWidth: 0,
+    }
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
