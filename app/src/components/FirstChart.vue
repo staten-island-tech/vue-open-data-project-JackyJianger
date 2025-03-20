@@ -1,12 +1,12 @@
 <template>
     <div>
-      <Bar v-if="chartData" :data="chartData" :options="ChartOptions" />
+      <Bar :data="chartData" :options="ChartOptions" />
+      
     </div>
   </template>
   
   <script setup>
   import { onMounted, ref, watch } from 'vue'
-  import {Bar} from "vue-chartjs";
   import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
   import {reactive} from "vue"
 
