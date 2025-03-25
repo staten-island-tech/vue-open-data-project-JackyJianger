@@ -11,12 +11,16 @@
         <div class="card-footer">
           <p>{{ school.district || 'District: N/A' }}</p>
         </div>
+        <RouterLink to="/about"><btn>District</btn></RouterLink>
       </div>
     </div>
+    <RouterView/>
   </template>
   
   <script setup>
   import { defineProps } from 'vue';
+  import {RouterLink, RouterView} from 'vue-router';
+
 
 const props = defineProps({
   satData: Array 
