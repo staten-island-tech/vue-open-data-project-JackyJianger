@@ -19,7 +19,6 @@ async function getData() {
   let res = await fetch(`https://data.cityofnewyork.us/resource/f9bf-2cp4.json`)
   let data = await res.json()
   satData.value = data
-  console.log(data)
 }
 
 

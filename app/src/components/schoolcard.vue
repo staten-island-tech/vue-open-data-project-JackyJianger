@@ -21,7 +21,6 @@
   import { defineProps } from 'vue';
   import {RouterLink, RouterView} from 'vue-router';
 
-
 const props = defineProps({
   satData: Array 
 });

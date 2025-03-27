@@ -1,24 +1,71 @@
 <template>
   <div class="about">
-    <BarChart :data="satsatData"  />
+    <BarChart :data="chartData" :key="keychart" />
   </div>
 </template>
 
 <script setup>
 import BarChart from '../components/BarChart.vue'
-import { reactive } from 'vue'
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import schoolcard from '../components/schoolcard.vue'
-let data = []
-const satsatData = reactive({
-  labels: ['ReadingScore','MathScore'] ,
+import { reactive, ref, onMounted } from 'vue'
+
+const readsatData = ref([0,0,0,0,0,0,0,0])
+const satData = ref([0,0,0,0,0,0,0,0])
+const keychart = ref(0)
+
+async function getData() {
+  let res = await fetch(`https://data.cityofnewyork.us/resource/f9bf-2cp4.json`)
+  let data = await res.json() 
+  data.forEach((item) => {
+    if (item.sat_writing_avg_score <= 100) {
+      readsatData.value[0]++
+    } else if (item.sat_writing_avg_score <= 200) {
+      readsatData.value[1]++
+    } else if (item.sat_writing_avg_score <= 300) {
+      readsatData.value[2]++
+    } else if (item.sat_writing_avg_score <= 400) {
+      readsatData.value[3]++
+    } else if (item.sat_writing_avg_score <= 500) {
+      readsatData.value[4]++
+    } else if (item.sat_writing_avg_score <= 600) {
+      readsatData.value[5]++
+    } else if (item.sat_writing_avg_score <= 700) {
+      readsatData.value[6]++
+    } else if (item.sat_writing_avg_score <= 800) {
+      readsatData.value[7]++
+    }
+    if (item.sat_math_avg_score <= 100) {
+      satData.value[0]++
+    } else if (item.sat_math_avg_score <= 200) {
+      satData.value[1]++
+    } else if (item.sat_math_avg_score <= 300) {
+      satData.value[2]++
+    } else if (item.sat_math_avg_score <= 400) {
+      satData.value[3]++
+    } else if (item.sat_math_avg_score <= 500) {
+      satData.value[4]++
+    } else if (item.sat_math_avg_score <= 600) {
+      satData.value[5]++
+    } else if (item.sat_math_avg_score <= 700) {
+      satData.value[6]++
+    } else if (item.sat_math_avg_score <= 800) {
+      satData.value[7]++
+    }
+  }) 
+  
+  keychart.value++
+}
+
+onMounted(() => {
+  getData()
+})
+
+const chartData = reactive({
+  labels: ['0-100', '101-200', '201-300', '301-400', '401-500', '501-600', '601-700', '701-800'],  
   datasets: [
     {
-      label:"Count",
-      data: ['ReadingScore' , 'MathScore'],
-      backgroundColor: ["cdc0b0", "cdc0b0"],
-      borderWidth: 0,
+      label: 'SAT Reading Scores',
+      data: readsatData.value, 
+      backgroundColor: ["FF0000", "0000FF", "22FF33", "DD22FF", "FF22DD", "FFDD22", "22FFDD", "22DDFF"],
     }
   ]
 })
