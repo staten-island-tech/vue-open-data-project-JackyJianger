@@ -1,33 +1,30 @@
 <template>
-    <div>
-      <div v-for="(school, index) in satData" :key="index" class="school-card">
-        <div class="card-header">
-          <h3>{{ school.school_name }}</h3>
-        </div>
-        <div class="card-body">
-          <p><strong>Reading Score:</strong> {{ school.sat_critical_reading_avg_score || 'N/A' }}</p>
-          <p><strong>Math Score:</strong> {{ school. sat_math_avg_score || 'N/A' }}</p>
-        </div>
-        <div class="card-footer">
-          <p>{{ school.district || 'District: N/A' }}</p>
-        </div>
-        <RouterLink to="/about"><btn>District</btn></RouterLink>
+  <div>
+    <div v-for="(school, index) in satData" :key="index" class="school-card">
+      <div class="card-header">
+        <h3>{{ school.school_name }}</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>Reading Score:</strong> {{ school.sat_critical_reading_avg_score || 'N/A' }}</p>
+        <p><strong>Math Score:</strong> {{ school.sat_math_avg_score || 'N/A' }}</p>
+      </div>
+      <div class="card-footer">
       </div>
     </div>
-    <RouterView/>
-  </template>
-  
-  <script setup>
-  import { defineProps } from 'vue';
-  import {RouterLink, RouterView} from 'vue-router';
+  </div>
+</template>
 
+<script setup>
+import { defineProps } from 'vue';
 const props = defineProps({
-  satData: Array 
+  satData: {
+    type: Array,
+    required: true
+  }
 });
+</script>
 
-  </script>
-
-<style lang="css"scoped>
+<style lang="css" scoped>
 .school-card {
   background: #fff;
   border-radius: 8px;
