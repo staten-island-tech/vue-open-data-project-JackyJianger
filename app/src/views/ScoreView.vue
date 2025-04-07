@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PieChart :data="pieData" />
+    <PieChart :data="pieData" :key="keychart"/>
   </div>
 </template>
 
