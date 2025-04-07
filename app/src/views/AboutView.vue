@@ -9,7 +9,6 @@ import BarChart from '../components/BarChart.vue'
 import { reactive, ref, onMounted } from 'vue'
 
 const readsatData = ref([0, 0, 0, 0, 0, 0, 0, 0])
-const satData = ref([0, 0, 0, 0, 0, 0, 0, 0])
 const keychart = ref(0)
 
 async function getData() {
@@ -33,23 +32,6 @@ async function getData() {
     } else if (item.sat_writing_avg_score <= 800) {
       readsatData.value[7]++
     }
-    if (item.sat_math_avg_score <= 100) {
-      satData.value[0]++
-    } else if (item.sat_math_avg_score <= 200) {
-      satData.value[1]++
-    } else if (item.sat_math_avg_score <= 300) {
-      satData.value[2]++
-    } else if (item.sat_math_avg_score <= 400) {
-      satData.value[3]++
-    } else if (item.sat_math_avg_score <= 500) {
-      satData.value[4]++
-    } else if (item.sat_math_avg_score <= 600) {
-      satData.value[5]++
-    } else if (item.sat_math_avg_score <= 700) {
-      satData.value[6]++
-    } else if (item.sat_math_avg_score <= 800) {
-      satData.value[7]++
-    }
   })
 
   keychart.value++
@@ -66,14 +48,14 @@ const chartData = reactive({
       label: 'Average SAT Reading Scores in Schools',
       data: readsatData.value,
       backgroundColor: [
-        'FF0000',
-        '0000FF',
-        '22FF33',
-        'DD22FF',
-        'FF22DD',
-        'FFDD22',
-        '22FFDD',
-        '22DDFF',
+        '#af2b2b',
+        '#af2b2b',
+        '#af2b2b',
+        '#af2b2b',
+        '#36A2EB',
+        '#FFCE56',
+        '#07AA3D',
+        '#920A92',
       ],
     },
   ],

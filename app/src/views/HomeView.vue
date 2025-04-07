@@ -8,7 +8,6 @@
 import BarChart from '../components/BarChart.vue'
 import { reactive, ref, onMounted } from 'vue'
 
-const readsatData = ref([0, 0, 0, 0, 0, 0, 0, 0])
 const satData = ref([0, 0, 0, 0, 0, 0, 0, 0])
 const keychart = ref(0)
 
@@ -16,23 +15,6 @@ async function getData() {
   let res = await fetch(`https://data.cityofnewyork.us/resource/f9bf-2cp4.json`)
   let data = await res.json()
   data.forEach((item) => {
-    if (item.sat_writing_avg_score <= 100) {
-      readsatData.value[0]++
-    } else if (item.sat_writing_avg_score <= 200) {
-      readsatData.value[1]++
-    } else if (item.sat_writing_avg_score <= 300) {
-      readsatData.value[2]++
-    } else if (item.sat_writing_avg_score <= 400) {
-      readsatData.value[3]++
-    } else if (item.sat_writing_avg_score <= 500) {
-      readsatData.value[4]++
-    } else if (item.sat_writing_avg_score <= 600) {
-      readsatData.value[5]++
-    } else if (item.sat_writing_avg_score <= 700) {
-      readsatData.value[6]++
-    } else if (item.sat_writing_avg_score <= 800) {
-      readsatData.value[7]++
-    }
     if (item.sat_math_avg_score <= 100) {
       satData.value[0]++
     } else if (item.sat_math_avg_score <= 200) {
@@ -66,14 +48,14 @@ const chartData = reactive({
       label: 'Average SAT Math Scores in Schools',
       data: satData.value,
       backgroundColor: [
-        'FF0000',
-        '0000FF',
-        '22FF33',
-        'DD22FF',
-        'FF22DD',
-        'FFDD22',
-        '22FFDD',
-        '22DDFF',
+        '#af2b2b',
+        '#af2b2b',
+        '#af2b2b',
+        '#af2b2b',
+        '#36A2EB',
+        '#FFCE56',
+        '#07AA3D',
+        '#920A92',
       ],
     },
   ],
